@@ -1,6 +1,8 @@
 const express = require("express")
 const router = require("./Router");
 const routerUser = require("./Router/User");
+const routerGeneral = require("./Router/general");
+const {swaggerDocs} = require("./Router/swagger");
 const conexion = require("./Database/conexion")
 const bodyParser = require("body-parser")
 const cors = require("cors")
@@ -26,10 +28,12 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors())
 app.use("/",router())
-app.use("/user",routerUser())
+app.use("/users",routerUser())
+app.use("/generals",routerGeneral())
 
 app.listen(process.env.PORT,() =>{
-    console.log("localhost:"+process.env.PORT)
+    console.log("http://localhost:"+process.env.PORT)
+    swaggerDocs(app,process.env.PORT)
 })
 
 

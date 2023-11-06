@@ -38,3 +38,19 @@ exports.getUser = async (req,res,next) =>{
         res.status(500).json({message: e.message})
     }
 }
+
+exports.getByIdUser = async (req,res,next) =>{
+    try{
+        const{id} = req.params
+        const usuario = await Usuario.findByPk(id)
+        res.status(200).json(responseData(
+            200,
+            'success',
+            usuario));
+    }catch (e) {
+        console.log(e)
+        res.send(e)
+        res.status(500).err(e)
+        res.status(500).json({message: e.message})
+    }
+}
