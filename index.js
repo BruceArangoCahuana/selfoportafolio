@@ -2,6 +2,7 @@ const express = require("express")
 const router = require("./Router");
 const routerUser = require("./Router/User");
 const routerGeneral = require("./Router/general");
+const routerSkill = require("./Router/Skill");
 const {swaggerDocs} = require("./Router/swagger");
 const conexion = require("./Database/conexion")
 const bodyParser = require("body-parser")
@@ -30,6 +31,7 @@ app.use(cors())
 app.use("/",router())
 app.use("/users",routerUser())
 app.use("/generals",routerGeneral())
+app.use("/skill",routerSkill())
 
 app.listen(process.env.PORT,() =>{
     console.log("http://localhost:"+process.env.PORT)
