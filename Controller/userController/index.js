@@ -1,3 +1,6 @@
+/**
+ *CRUD USUARIO  BARANGO
+ * **/
 const Usuario = require("../../Entity/Usuario");
 const responseData = require("../../helpers");
 
