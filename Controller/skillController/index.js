@@ -1,3 +1,6 @@
+/**
+ *CRUD SKILL  BARANGO
+ * **/
 const Skill = require("../../Entity/Skill")
 const responseData = require("../../helpers");
 
