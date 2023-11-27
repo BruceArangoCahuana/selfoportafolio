@@ -3,6 +3,7 @@ const swaggerUi = require("swagger-ui-express")
 const UserSwa = require("./swaggerDefinitions/User/UserSwa");
 const GeneralSwa = require("./swaggerDefinitions/General/GeneralSwa");
 const SkillSwa = require("./swaggerDefinitions/Skill/SkillSwa");
+const LenguajeSwa = require("./swaggerDefinitions/Lenguaje/LenguajeSwa");
 
 const options = {
     definition: {
@@ -13,9 +14,10 @@ const options = {
         }
     },
     apis: [
-        "./Router/User/index.js",
-        './Router/generals/index.js',
-        './Router/Skill/index.js'
+        "./Router/User/UserSwa.js",
+        './Router/generals/GeneralSwa.js',
+        './Router/Skill/SkillSwa.js',
+        './Router/Skill/LenguajeSwa.js'
     ]
 };
 
@@ -58,6 +60,26 @@ swaggerSpec.paths["/skill/create"] = {
 
 swaggerSpec.paths["/skill/list"] = {
     get: SkillSwa.skillList
+};
+
+swaggerSpec.paths["/skill/list/{id}"] = {
+    get: SkillSwa.skillById
+};
+
+swaggerSpec.paths["/skill/update/{id}"] = {
+    put: SkillSwa.updateSkillById
+};
+
+swaggerSpec.paths["/lenguaje/create"] = {
+    post: LenguajeSwa.createLenguaje
+};
+
+swaggerSpec.paths["/lenguaje/list"] = {
+    get: LenguajeSwa.lenguajeList
+};
+
+swaggerSpec.paths["/lenguaje/list/{id}"] = {
+    get: LenguajeSwa.lenguajeById
 };
 
 const swaggerDocs = (app, port) => {
